@@ -17,15 +17,13 @@ class Todo {
 
     /**
      * @ORM\Column(type="string")
-     * @Annotation\Options({"label": "Todo: ", "name": "task"})
+     * @Annotation\Options({"label": "Todo: "})
      */
     protected $task;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Annotation\Attributes({"type": "hidden"})
-     * @Annotation\AllowEmpty(true)
-     * @Annotation\Required(false)
+     * @Annotation\Exclude()
      */
     protected $done;
 

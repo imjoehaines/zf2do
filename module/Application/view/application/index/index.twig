@@ -4,15 +4,13 @@
     {{ form(form) }}
 
     <section>
-        <ol>
-            {% for item in todos %}
-                <li>
-                    {{ item.task }}
-                    {% if item.done %}
-                        <span class="done">Done!</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ol>
+        {% for item in todos %}
+            {% spaceless %}
+                <p {{ item.done ? 'class="done"' }}>
+                    <span class="task-id">{{ item.id }}.</span>
+                    {{ item.task }}{{ item.done ? ' - Done!' }}
+                </p>
+            {% endspaceless %}
+        {% endfor %}
     </section>
 {% endblock content %}
