@@ -17,7 +17,7 @@ class Todo {
 
     /**
      * @ORM\Column(type="string")
-     * @Annotation\Options({"label": "Todo: "})
+     * @Annotation\Attributes({"placeholder": "Add a new task..."})
      */
     protected $task;
 

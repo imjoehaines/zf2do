@@ -6,6 +6,11 @@ input {
     line-height: 1;
 }
 
+input[name="task"] {
+    width: 100%;
+    margin: 0 2rem;
+}
+
 form {
     margin-bottom: 2rem;
 }
