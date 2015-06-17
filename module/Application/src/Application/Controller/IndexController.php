@@ -41,7 +41,7 @@ class IndexController extends AbstractActionController
 
         $repository = $objectManager->getRepository('\Application\Entity\Todo');
 
-        $tasks = $repository->findAll();
+        $tasks = $repository->findBy([], ['id' => 'DESC']);
 
         return new ViewModel([
             'form' => $form,

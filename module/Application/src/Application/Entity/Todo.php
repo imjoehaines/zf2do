@@ -16,10 +16,23 @@ class Todo {
     protected $id;
 
     /**
-     * @ORM\Column(name="task", type="string")
+     * @ORM\Column(type="string")
      * @Annotation\Options({"label": "Todo: ", "name": "task"})
      */
     protected $task;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Annotation\Attributes({"type": "hidden"})
+     * @Annotation\AllowEmpty(true)
+     * @Annotation\Required(false)
+     */
+    protected $done;
+
+    public function __construct()
+    {
+        $this->done = 0;
+    }
 
     public function getId()
     {
@@ -31,6 +44,11 @@ class Todo {
         return $this->task;
     }
 
+    public function getDone()
+    {
+        return $this->done;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -40,6 +58,12 @@ class Todo {
     public function setTask($task)
     {
         $this->task = $task;
+        return $this;
+    }
+
+    public function setDone($done)
+    {
+        $this->done = $done;
         return $this;
     }
 }

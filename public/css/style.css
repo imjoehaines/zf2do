@@ -5,3 +5,20 @@ h1, h2 {
 input {
     line-height: 1;
 }
+
+form {
+    margin-bottom: 2rem;
+}
+
+ol {
+    padding: 0;
+}
+
+li {
+    margin-top: 0.25rem;
+}
+
+.done {
+    margin-left: 1rem;
+    color: #888;
+}

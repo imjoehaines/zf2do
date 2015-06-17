@@ -4,10 +4,15 @@
     {{ form(form) }}
 
     <section>
-        <ul>
+        <ol>
             {% for item in todos %}
-                <li>{{ item.task }}</li>
+                <li>
+                    {{ item.task }}
+                    {% if item.done %}
+                        <span class="done">Done!</span>
+                    {% endif %}
+                </li>
             {% endfor %}
-        </ul>
+        </ol>
     </section>
 {% endblock content %}
