@@ -16,8 +16,6 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        throw new \Exception("Error Processing Request", 1);
-        
         return new ViewModel();
     }
 }
