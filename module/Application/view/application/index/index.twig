@@ -4,6 +4,7 @@
     {{ form(form) }}
 
     <section>
+        <p>You have {{ todos|length }} items in your todo list.</p>
         {% for item in todos %}
             {% spaceless %}
                 <p {{ item.done ? 'class="done"' }}>
