@@ -1,5 +1,13 @@
 {% extends 'layout/layout.twig' %}
 
 {% block content %}
+    {{ form(form) }}
 
+    <section>
+        <ul>
+            {% for item in todos %}
+                <li>{{ item.task }}</li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock content %}
