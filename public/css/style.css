@@ -1,5 +1,6 @@
-h1, h2 {
+h1 {
     border: none;
+    text-align: center;
 }
 
 input {
