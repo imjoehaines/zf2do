@@ -6,13 +6,15 @@
 
     <section>
         {% if todos|length > 0 %}
-            <p class="center">You have completed {{ (completedItems|length / todos|length * 100)|number_format(0) }}% of the items in your todo list</p>
+            <p class="center">
+                You have completed {{ (completedItems|length / todos|length * 100)|number_format(0) }}% of the items in your todo list
+            </p>
         {% endif %}
 
         {% for item in todos %}
             <p class="row{{ item.done ? ' done' }}">
                 <span class="half column center task-id">{{ item.id }}.</span>
-                <span class="five column">{{ item.task }}{{ item.done ? ' - Done!' }}</span>
+                <span class="five column">{{ item.task }}{{ item.done ? ' - done!' }}</span>
                 <span class="half column center">
                     <a href="{{ basePath() }}/complete/{{ item.id }}" class="check">✔</a>
                     <a href="{{ basePath() }}/delete/{{ item.id }}" class="delete">✖</a>
