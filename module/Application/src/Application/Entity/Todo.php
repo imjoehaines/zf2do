@@ -17,7 +17,10 @@ class Todo {
 
     /**
      * @ORM\Column(type="string")
-     * @Annotation\Attributes({"placeholder": "Add a new task..."})
+     * @Annotation\Attributes({"placeholder": "Add a new task...", "maxlength": "250"})
+     * @Annotation\Filter({"name": "StringTrim"})
+     * @Annotation\Validator({"name": "StringLength", "options": {"min": 1, "max": 250}})
+     * @Annotation\ErrorMessage("You did it wrong, try again")
      */
     protected $task;
 
