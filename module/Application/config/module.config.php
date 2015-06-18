@@ -23,7 +23,7 @@ return array(
             'task-delete' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/delete/:id',
+                    'route' => '/delete[/:id]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\TaskUpdate',
                         'action' => 'delete',
@@ -36,7 +36,7 @@ return array(
             'task-complete' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/complete/:id',
+                    'route' => '/complete[/:id]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\TaskUpdate',
                         'action' => 'complete',
