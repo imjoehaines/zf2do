@@ -46,6 +46,7 @@ class IndexController extends AbstractActionController
         return new ViewModel([
             'form' => $form,
             'todos' => $tasks,
+            'completedItems' => $repository->findBy(['done' => 1]),
         ]);
     }
 }
