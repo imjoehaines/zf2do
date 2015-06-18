@@ -32,6 +32,23 @@ class Todo {
         $this->done = 0;
     }
 
+    public function markComplete()
+    {
+        $this->done = 1;
+        return $this;
+    }
+
+    public function markIncomplete()
+    {
+        $this->done = 0;
+        return $this;
+    }
+
+    public function isDone()
+    {
+        return $this->done ? true : false;
+    }
+
     public function getId()
     {
         return $this->id;

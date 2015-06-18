@@ -1,17 +1,21 @@
 {% extends 'layout/layout.twig' %}
 
 {% block content %}
+{% spaceless %}
     {{ form(form) }}
 
     <section>
-        <p>You have {{ todos|length }} items in your todo list.</p>
+        <p class="center">You have {{ todos|length }} items in your todo list</p>
         {% for item in todos %}
-            {% spaceless %}
-                <p {{ item.done ? 'class="done"' }}>
-                    <span class="task-id">{{ item.id }}.</span>
-                    {{ item.task }}{{ item.done ? ' - Done!' }}
+                <p class="row{{ item.done ? ' done' }}">
+                    <span class="half column center task-id">{{ item.id }}.</span>
+                    <span class="five column">{{ item.task }}{{ item.done ? ' - Done!' }}</span>
+                    <span class="half column center">
+                        <a href="{{ basePath() }}/complete/{{ item.id }}" class="check">✔</a>
+                        <a href="{{ basePath() }}/delete/{{ item.id }}" class="delete">✖</a>
+                    </span>
                 </p>
-            {% endspaceless %}
         {% endfor %}
     </section>
+{% endspaceless %}
 {% endblock content %}
