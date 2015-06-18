@@ -37,6 +37,11 @@
     }
 }
 
+main {
+    margin: 3rem auto;
+    overflow: hidden;
+}
+
 h1 {
     border: none;
     text-align: center;
@@ -48,10 +53,10 @@ input {
 
 input[name="task"] {
     width: 100%;
-    margin: 0 2rem;
 }
 
 form {
+    margin: 0 2rem;
     margin-bottom: 2rem;
 }
 
