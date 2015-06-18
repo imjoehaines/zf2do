@@ -5,7 +5,7 @@
     {{ form(form) }}
 
     <section>
-        <p class="center">You have completed {{ (completedItems|length / todos|length * 100)|number_format(0) }}% of the items in your todo list</p>
+        <p class="center">You have completed {{ todos|length > 0 ? (completedItems|length / todos|length * 100)|number_format(0) : 100 }}% of the items in your todo list</p>
         {% for item in todos %}
                 <p class="row{{ item.done ? ' done' }}">
                     <span class="half column center task-id">{{ item.id }}.</span>
