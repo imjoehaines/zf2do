@@ -19,6 +19,20 @@ return array(
                         'action' => 'index',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'filters' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => 'filter/:filter',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'index',
+                                'filter' => 'all',
+                            ),
+                        ),
+                    ),
+                ),
             ),
             'task-delete' => array(
                 'type' => 'Segment',
@@ -70,7 +84,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\TaskUpdate' => 'Application\Controller\TaskUpdateController'
+            'Application\Controller\TaskUpdate' => 'Application\Controller\TaskUpdateController',
+            'Application\Controller\Filter' => 'Application\Controller\FilterController',
         ),
     ),
     'view_manager' => array(

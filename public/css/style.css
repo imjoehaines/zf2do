@@ -57,15 +57,14 @@ input[name="task"] {
 
 form {
     margin: 0 2rem;
-    margin-bottom: 2rem;
 }
 
-ol {
-    padding: 0;
+.inlineForm {
+    display: inline;
 }
 
-li {
-    margin-top: 0.25rem;
+label {
+    padding: 0 1rem;
 }
 
 .task-id {

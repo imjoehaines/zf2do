@@ -12,8 +12,6 @@
         <link href="{{ basePath() }}/css/marx.min.css" media="screen" rel="stylesheet" type="text/css">
         <link href="{{ basePath() }}/css/style.css" media="screen" rel="stylesheet" type="text/css">
         {% block style %}{% endblock style %}
-
-        {% block script %}{% endblock script %}
     </head>
     <body>
         <main>
@@ -21,5 +19,7 @@
 
             {% block content %}{% endblock content %}
         </main>
+
+        {% block script %}{% endblock script %}
     </body>
 </html>

@@ -4,8 +4,30 @@
 {% spaceless %}
     {{ form(form) }}
 
+        <fieldset class="center">
+            <form method="POST" action="/filter/all" id="filterFormAll" class="inlineForm">
+                <label for="filter-all">
+                    All
+                    <input id="filter-all" name="filters" data-filter="all" type="radio" {{ filter == 'all' ? 'checked' }}>
+                </label>
+            </form>
+
+            <form method="POST" action="/filter/incomplete" id="filterFormIncomplete" class="inlineForm">
+                <label for="filter-incomplete">
+                    Incomplete
+                    <input id="filter-incomplete" name="filters" data-filter="incomplete" type="radio" {{ filter == 'incomplete' ? 'checked' }}>
+                </label>
+            </form>
+            <form method="POST" action="/filter/complete" id="filterFormComplete" class="inlineForm">
+                <label for="filter-complete">
+                    Complete
+                    <input id="filter-complete" name="filters" data-filter="complete" type="radio" {{ filter == 'complete' ? 'checked' }}>
+                </label>
+            </form>
+        </fieldset>
+
     <section>
-        {% if todos|length > 0 %}
+        {% if todos|length > 0 and filter == 'all' %}
             <p class="center">
                 You have completed {{ (completedItems|length / todos|length * 100)|number_format(0) }}% of the items in your todo list
             </p>
@@ -26,3 +48,7 @@
     </section>
 {% endspaceless %}
 {% endblock content %}
+
+{% block script %}
+    <script src="{{ basePath() }}/js/filters.js"></script>
+{% endblock %}

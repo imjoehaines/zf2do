@@ -20,6 +20,9 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $filter = $this->params()->fromRoute('filter');
+        if (!$filter) $filter = 'all';
+
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $todo = new Todo();
         $builder = new AnnotationBuilder($objectManager);
@@ -29,8 +32,8 @@ class IndexController extends AbstractActionController
         $form->bind($todo);
 
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            $form->setData($request->getPost());
+        if ($request->isPost() && isset($request->getPost()->task)) {
+            $form->setData(['task' => $request->getPost()->task]);
             if ($form->isValid()) {
                 $objectManager->persist($todo);
                 $objectManager->flush();
@@ -41,12 +44,28 @@ class IndexController extends AbstractActionController
 
         $repository = $objectManager->getRepository('\Application\Entity\Todo');
 
-        $tasks = $repository->findBy([], ['id' => 'DESC']);
+        switch ($filter) {
+            case 'all':
+                $filters = [];
+                break;
+            case 'complete':
+                $filters = ['done' => 1];
+                break;
+            case 'incomplete':
+                $filters = ['done' => 0];
+                break;
+            default:
+                throw new Exception('Error processing request -- invalid filter given');
+                
+        }
+
+        $tasks = $repository->findBy($filters, ['id' => 'DESC']);
 
         return new ViewModel([
             'form' => $form,
             'todos' => $tasks,
             'completedItems' => $repository->findBy(['done' => 1]),
+            'filter' => $filter,
         ]);
     }
 }
